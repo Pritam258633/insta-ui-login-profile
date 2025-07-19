@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Instagram Login + Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: sans-serif;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container, .profile {
+      width: 350px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #3897f0;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .profile img.profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff004f;
+    }
+    .username {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .counts {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .count-box {
+      flex: 1;
+    }
+    .count-box strong {
+      display: block;
+      font-size: 16px;
+    }
+    .posts img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div class="container" id="loginPage">
+    <h2>Login to Instagram</h2>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <div id="loginError" style="color:red;"></div>
+  </div>
+
+  <!-- Profile Page -->
+  <div class="profile hidden" id="profilePage">
+    <img class="profile-pic" src="IMG-20250615-WA0000~2.jpg" alt="Profile">
+    <div class="username">@official_pritam__12</div>
+    <div class="counts">
+      <div class="count-box">
+        <strong>150</strong>
+        Posts
+      </div>
+      <div class="count-box">
+        <strong>1,325</strong>
+        Followers
+      </div>
+      <div class="count-box">
+        <strong>310</strong>
+        Following
+      </div>
+    </div>
+    <div class="posts">
+      <img src="IMG-20250615-WA0000~2.jpg" alt="Post">
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (user === "@official_pritam__12" && pass === "pritam123") {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("profilePage").classList.remove("hidden");
+      } else {
+        document.getElementById("loginError").textContent = "Invalid username or password.";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
