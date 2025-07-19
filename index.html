@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Instagram Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fafafa;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px #00000010;
+    }
+
+    .logo {
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #3897f0;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      object-fit: cover;
+    }
+
+    .username {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat h3 {
+      margin: 0;
+    }
+
+    .posts {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .posts img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="logo" alt="Instagram Logo">
+
+  <!-- Login Form -->
+  <div id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Log In</button>
+    <p id="errorMsg" style="color:red;"></p>
+  </div>
+
+  <!-- Profile Section -->
+  <div id="profile" class="hidden">
+    <div class="profile">
+      <img src="profile.jpg" alt="Profile Pic">
+      <div class="username" id="profileUsername">@official_pritam__12</div>
+      <div class="stats">
+        <div class="stat"><h3>143</h3><p>Posts</p></div>
+        <div class="stat"><h3>1.5K</h3><p>Followers</p></div>
+        <div class="stat"><h3>500</h3><p>Following</p></div>
+      </div>
+    </div>
+
+    <div class="posts">
+      <img src="profile.jpg" alt="Post 1">
+      <img src="https://source.unsplash.com/random/201" alt="Post 2">
+      <img src="https://source.unsplash.com/random/202" alt="Post 3">
+    </div>
+
+    <button style="margin-top:20px;" onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if (user === "@official_pritam__12" && pass === "pritam123") {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("profile").classList.remove("hidden");
+    } else {
+      document.getElementById("errorMsg").textContent = "Invalid credentials!";
+    }
+  }
+
+  function logout() {
+    document.getElementById("loginForm").classList.remove("hidden");
+    document.getElementById("profile").classList.add("hidden");
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("errorMsg").textContent = "";
+  }
+</script>
+
+</body>
+</html>
